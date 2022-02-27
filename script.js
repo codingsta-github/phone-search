@@ -6,7 +6,12 @@ document.getElementById('search-field').addEventListener('keydown',function(e){
       searchFood()
    }
 })
-
+const toggleSpinner=displayStyle =>{
+document.getElementById('spinner').style.display=displayStyle;
+}
+const toggleDisplay=displayStyle=>{
+   document.getElementById('search-result').style.display=displayStyle;
+}
 const searchFood=()=>{
    const searchField= document.getElementById('search-field');
    const searchText=searchField.value;
@@ -15,7 +20,8 @@ const searchFood=()=>{
       alert('please type something')
    } else {
       
-   
+      toggleSpinner('block')   
+      toggleDisplay('none')   
 
    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`)
         .then(res=>res.json())
@@ -26,7 +32,8 @@ const searchFood=()=>{
 const displayFood=data=>{
     const meals=data;
     const searchResult=document.getElementById('search-result')
-    searchResult.innerHTML=''
+    searchResult.textContent='';
+    
                                     // console.log(meals)
                                     // meals.forEach(meal => {
                                     //     console.log(meal)
@@ -42,5 +49,7 @@ for (const meal of meals) {
    </div>
  </div>`
  searchResult.appendChild(div)
+ toggleDisplay('grid') 
+ toggleSpinner('none')  
 }
 }
