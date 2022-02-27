@@ -55,7 +55,7 @@ for (const meal of meals) {
      <img src="${meal.strMealThumb}" class="card-img-top" alt="...">
      <div class="card-body">
        <h5 class="card-title" id="title">${meal.strMeal}</h5>
-       <p class="card-text" style='font-size:12px' id="details">${meal.strInstructions.slice(0,250)}</div>
+       <p class="card-text" style='font-size:12px' id="details">${meal.strInstructions}</div>
    </div>
  </div>`
  searchResult.appendChild(div)
