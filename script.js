@@ -24,15 +24,19 @@ const searchFood=()=>{
    searchField.value='';
    if (searchText==''||!isNaN(searchText)) {
       toggleTypeError('block')
+      toggleDataError('none')
+      toggleSpinner('none')   
+      toggleDisplay('none')
    } else {
       toggleTypeError('none')
-      toggleSpinner('block')   
+      toggleDataError('none') 
       toggleDisplay('none')   
+      toggleSpinner('block')  
 
    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`)
         .then(res=>res.json())
         .then(data=>displayFood(data.meals))
-   }
+   
 }
 
 const displayFood=data=>{
@@ -40,6 +44,7 @@ const displayFood=data=>{
     const searchResult=document.getElementById('search-result')
     searchResult.textContent='';
     if (meals == null) {
+      toggleTypeError('none')
       toggleDataError('block')
       toggleSpinner('none')   
       toggleDisplay('none')
@@ -61,5 +66,6 @@ for (const meal of meals) {
  searchResult.appendChild(div)
  toggleDisplay('grid') 
  toggleSpinner('none')  
+}
 }
 }
