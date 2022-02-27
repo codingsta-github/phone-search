@@ -9,6 +9,12 @@ document.getElementById('search-field').addEventListener('keydown',function(e){
 const toggleSpinner=displayStyle =>{
 document.getElementById('spinner').style.display=displayStyle;
 }
+const toggleTypeError=displayStyle =>{
+document.getElementById('type-error').style.display=displayStyle;
+}
+const toggleDataError=displayStyle =>{
+document.getElementById('data-error').style.display=displayStyle;
+}
 const toggleDisplay=displayStyle=>{
    document.getElementById('search-result').style.display=displayStyle;
 }
@@ -16,10 +22,10 @@ const searchFood=()=>{
    const searchField= document.getElementById('search-field');
    const searchText=searchField.value;
    searchField.value='';
-   if (searchText=='') {
-      alert('please type something')
+   if (searchText==''||!isNaN(searchText)) {
+      toggleTypeError('block')
    } else {
-      
+      toggleTypeError('none')
       toggleSpinner('block')   
       toggleDisplay('none')   
 
@@ -33,7 +39,11 @@ const displayFood=data=>{
     const meals=data;
     const searchResult=document.getElementById('search-result')
     searchResult.textContent='';
-    
+    if (meals == null) {
+      toggleDataError('block')
+      toggleSpinner('none')   
+      toggleDisplay('none')
+   }
                                     // console.log(meals)
                                     // meals.forEach(meal => {
                                     //     console.log(meal)

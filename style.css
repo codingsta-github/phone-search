@@ -1,0 +1,16 @@
+#spinner{
+    display: none;
+} 
+#search-result{
+    display: grid; 
+    grid-template-columns: repeat(3,1fr); 
+    grid-gap: 20px; 
+    padding: 15px;
+}
+@media only screen and (max-width:576px){
+    #search-result{
+        display: block; 
+        grid-template-columns: repeat(1,1fr)!important;
+        padding: 20px!important;
+}
+}
