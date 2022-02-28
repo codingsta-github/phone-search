@@ -1,9 +1,9 @@
 document.getElementById('search-button').addEventListener('click',function(){
-   searchFood()
+   searchPhone()
 })
 document.getElementById('search-field').addEventListener('keydown',function(e){
    if (e.keyCode==13) {
-      searchFood()
+      searchPhone()
    }
 })
 const toggleSpinner=displayStyle =>{
@@ -18,7 +18,7 @@ document.getElementById('data-error').style.display=displayStyle;
 const toggleDisplay=displayStyle=>{
    document.getElementById('search-result').style.display=displayStyle;
 }
-const searchFood=()=>{
+const searchPhone=()=>{
    const searchField= document.getElementById('search-field');
    const searchText=searchField.value;
    searchField.value='';
@@ -33,34 +33,33 @@ const searchFood=()=>{
       toggleDisplay('none')   
       toggleSpinner('block')  
 
-   fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`)
+   fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`)
         .then(res=>res.json())
-        .then(data=>displayFood(data.meals))
+        .then(phoneData=>displayPhone(phoneData.data))
    
 }
 
-const displayFood=data=>{
-    const meals=data;
+const displayPhone=data=>{
+    const phones=data;
     const searchResult=document.getElementById('search-result')
     searchResult.textContent='';
-    if (meals == null) {
+    if (phones == null) {
       toggleTypeError('none')
       toggleDataError('block')
       toggleSpinner('none')   
       toggleDisplay('none')
    }
-                                    // console.log(meals)
-                                    // meals.forEach(meal => {
-                                    //     console.log(meal)
-                                    // });
-for (const meal of meals) {
+                                  
+for (const phone of phones) {
    const div=document.createElement('div')
    div.innerHTML=` <div class="col">
    <div class="card">
-     <img src="${meal.strMealThumb}" class="card-img-top" alt="...">
+     <img src="${phone.image}" class="card-img-top px-5" alt="...">
      <div class="card-body">
-       <h5 class="card-title" id="title">${meal.strMeal}</h5>
-       <p class="card-text" style='font-size:12px' id="details">${meal.strInstructions}</div>
+       <h5 class="card-title" id="title">${phone.phone_name}</h5>
+       <p class="card-title" id="title">Brand: ${phone.brand}</p>
+       <p class="card-title" id="title">Model: ${phone.slug}</p>
+       <button onclick='details()'>details</button>
    </div>
  </div>`
  searchResult.appendChild(div)
@@ -68,4 +67,10 @@ for (const meal of meals) {
  toggleSpinner('none')  
 }
 }
+}
+var
+const details=()=>{
+   fetch('https://openapi.programming-hero.com/api/phone/${phone.slug}')
+   .then(res=>res.json())
+   .then(phoneDetails=>console.log(phoneDetails))
 }
