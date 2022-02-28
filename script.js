@@ -59,7 +59,8 @@ for (const phone of phones) {
        <h5 class="card-title" id="title">${phone.phone_name}</h5>
        <p class="card-title" id="title">Brand: ${phone.brand}</p>
        <p class="card-title" id="title">Model: ${phone.slug}</p>
-       <button onclick="details('${phone.slug}')">details</button>
+       <button onclick="details('${phone.slug}')" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+       Launch </button>
    </div>
  </div>`
  searchResult.appendChild(div)
@@ -72,5 +73,30 @@ for (const phone of phones) {
 const details=slug=>{
    fetch(`https://openapi.programming-hero.com/api/phone/${slug}`)
    .then(res=>res.json())
-   .then(phoneDetails=>console.log(phoneDetails))
+   .then(details=>phoneDetails(details.data.mainFeatures))
+}
+
+const phoneDetails=data=>{
+   console.log(data)
+   const modalDiv=document.getElementById('modal')
+   const detailsModal=document.createElement('div');
+   detailsModal.innerHTML=`<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+       </div>
+       <div class="modal-body">
+         ...
+       </div>
+       <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+         <button type="button" class="btn btn-primary">Save changes</button>
+       </div>
+     </div>
+   </div>
+ </div>
+ `
+   modalDiv.appendChild(detailsModal)
 }
