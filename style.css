@@ -38,4 +38,14 @@ input{
         grid-template-columns: repeat(1,1fr)!important;
         padding: 20px!important;
 }
+input{    
+    padding-left: 20px;
+    width: 200px;
+    height: 30px;
+}
+#search-button{
+    font-size: 20px;
+    padding: 7px;
+    color: #db3860!important;
+}
 }
