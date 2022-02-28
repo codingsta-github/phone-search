@@ -59,7 +59,7 @@ for (const phone of phones) {
        <h5 class="card-title" id="title">${phone.phone_name}</h5>
        <p class="card-title" id="title">Brand: ${phone.brand}</p>
        <p class="card-title" id="title">Model: ${phone.slug}</p>
-       <button onclick='details()'>details</button>
+       <button onclick="details('${phone.slug}')">details</button>
    </div>
  </div>`
  searchResult.appendChild(div)
@@ -68,9 +68,9 @@ for (const phone of phones) {
 }
 }
 }
-var
-const details=()=>{
-   fetch('https://openapi.programming-hero.com/api/phone/${phone.slug}')
+
+const details=slug=>{
+   fetch(`https://openapi.programming-hero.com/api/phone/${slug}`)
    .then(res=>res.json())
    .then(phoneDetails=>console.log(phoneDetails))
 }
