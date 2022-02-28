@@ -73,18 +73,20 @@ for (const phone of phones) {
 const details=slug=>{
    fetch(`https://openapi.programming-hero.com/api/phone/${slug}`)
    .then(res=>res.json())
-   .then(details=>phoneDetails(details.data.mainFeatures))
+   .then(details=>phoneDetails(details.data))
 }
 
 const phoneDetails=data=>{
+   const title=document.getElementById('exampleModalLabel')
+   title.innerText=data.name;
    const modalDiv=document.getElementById('modal')
    modalDiv.textContent=''
    const detailsModal=document.createElement('div');
    detailsModal.innerHTML=`
-   <p>storage: ${data.storage}</p>
-   <p>displaySize: ${data.displaySize}</p>
-   <p>chipSet: ${data.chipSet}</p>
-   <p>memory: ${data.memory}</p>
+   <p>storage: ${data.mainFeatures.storage}</p>
+   <p>displaySize: ${data.mainFeatures.displaySize}</p>
+   <p>chipSet: ${data.mainFeatures.chipSet}</p>
+   <p>memory: ${data.mainFeatures.memory}</p>
  `
    modalDiv.appendChild(detailsModal)
 }
