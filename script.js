@@ -43,7 +43,7 @@ const displayPhone=data=>{
     const phones=data;
     const searchResult=document.getElementById('search-result')
     searchResult.textContent='';
-    if (phones == null) {
+    if (phones.length == 0) {
       toggleTypeError('none')
       toggleDataError('block')
       toggleSpinner('none')   
@@ -54,7 +54,7 @@ for (const phone of phones) {
    const div=document.createElement('div')
    div.innerHTML=` <div class="col">
    <div class="card">
-     <img src="${phone.image}" class="card-img-top px-5" alt="...">
+     <img src="${phone.image}" class="card-img-top px-5 pt-5 pb-2" alt="...">
      <div class="card-body">
        <h5 class="card-title" id="title">${phone.phone_name}</h5>
        <p class="card-title" id="title">Brand: ${phone.brand}</p>
