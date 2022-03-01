@@ -107,8 +107,12 @@ const details=slug=>{
 }
 
 const phoneDetails=data=>{
+   const thumb=document.getElementById('thumb');
+   thumb.setAttribute('src',data.image)
    const title=document.getElementById('exampleModalLabel');
       title.innerText=data.name; //modal title
+   const release=document.getElementById('release-date');
+      release.innerText=data.releaseDate;
 
    const modalDiv=document.getElementById('modal')
       modalDiv.textContent=''; //for removing previous details on modal
@@ -120,7 +124,25 @@ const phoneDetails=data=>{
          <p> <span class="fw-bold">Display size: </span>${data.mainFeatures.displaySize}</p>
          <p> <span class="fw-bold">ChipSet: </span>${data.mainFeatures.chipSet}</p>
          <p> <span class="fw-bold">Memory: </span>${data.mainFeatures.memory}</p>
+         
+         <p> 
+         <span class="fw-bold">Sensors: </span>
+               <ul id="sensor-list">
+               </ul>
+         </p>
 
  `
-   modalDiv.appendChild(detailsModal)
+   modalDiv.appendChild(detailsModal);
+
+   //sensors
+   const sensors = data.mainFeatures.sensors;
+   const sensorsData=()=>{
+      for (const sensor of sensors) {
+         const li=document.createElement('li');
+         li.innerText= `${sensor}`
+         
+      document.getElementById('sensor-list').appendChild(li);
+      }
+}
+   sensorsData()  
 }

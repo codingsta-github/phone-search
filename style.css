@@ -32,6 +32,7 @@ input{
     grid-gap: 20px; 
     padding: 15px;
 }
+
 @media only screen and (max-width:576px){
     #search-result{
         display: flex!important; 
@@ -47,5 +48,8 @@ input{
         font-size: 20px;
         padding: 7px;
         color: #db3860!important;
+    }
+    #release-date{
+        font-size: 12px;
     }
 }
