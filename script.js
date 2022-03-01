@@ -80,7 +80,7 @@ const displayPhone=data=>{
       const div=document.createElement('div');
       div.innerHTML=` 
       <div class="col">
-         <div class="card">
+         <div class="card align-items-center">
 
             <img src="${phone.image}" class="card-img-top px-5 pt-5 pb-2" alt="...">
             
