@@ -111,14 +111,20 @@ const phoneDetails=data=>{
    thumb.setAttribute('src',data.image)
    const title=document.getElementById('exampleModalLabel');
       title.innerText=data.name; //modal title
+     
    const release=document.getElementById('release-date');
+     if (data.releaseDate=="") {
       release.innerText=data.releaseDate;
+     } else {
+      release.innerText='Sorry! release date not available';
+     }
+   
 
    const modalDiv=document.getElementById('modal')
       modalDiv.textContent=''; //for removing previous details on modal
 
-   const detailsModal=document.createElement('div');
-      detailsModal.innerHTML=`
+   const mainFeature=document.createElement('div');
+      mainFeature.innerHTML=`
 
          <p> <span class="fw-bold">Storage: </span>${data.mainFeatures.storage}</p>
          <p> <span class="fw-bold">Display size: </span>${data.mainFeatures.displaySize}</p>
@@ -130,10 +136,13 @@ const phoneDetails=data=>{
                <ul id="sensor-list">
                </ul>
          </p>
-
+         
  `
-   modalDiv.appendChild(detailsModal);
+   modalDiv.appendChild(mainFeature);
 
+
+  
+   
    //sensors
    const sensors = data.mainFeatures.sensors;
    const sensorsData=()=>{
@@ -145,4 +154,24 @@ const phoneDetails=data=>{
       }
 }
    sensorsData()  
+   
+   if (data.others!= undefined) {
+      
+   
+   const other=document.createElement('div');
+   other.innerHTML=`
+
+      <p> <span class="fw-bold">WLAN: </span>${data.others.WLAN}</p>
+      <p> <span class="fw-bold">Bluetooth: </span>${data.others.Bluetooth}</p>
+      <p> <span class="fw-bold">GPS: </span>${data.others.GPS}</p>
+      <p> <span class="fw-bold">NFC: </span>${data.others.NFC}</p>
+      <p> <span class="fw-bold">Radio: </span>${data.others.Radio}</p>
+      <p> <span class="fw-bold">USB: </span>${data.others.USB}</p>
+         
+ `
+ modalDiv.appendChild(other);
+   }
+   
 }
+
+
