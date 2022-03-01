@@ -74,7 +74,7 @@ const displayPhone=data=>{
       toggleDataError('block')
       toggleSpinner('none')   
       toggleDisplay('none')
-   }
+   }else{
    //first 20 phone
    for (let i = 0; i < 20; i++) {
       const phone = phones[i];
@@ -87,9 +87,9 @@ const displayPhone=data=>{
             <img src="${phone.image}" class="card-img-top px-5 pt-5 pb-2" alt="...">
             
             <div class="card-body text-center">
-               <h5 class="card-title" id="title">${phone.phone_name}</h5>
-               <h6 class="card-title" id="title">Brand: ${phone.brand}</h6>
-               <p class="card-title" id="title">Model: ${phone.slug}</p>
+               <h5 class="card-title" id="company">${phone.phone_name}</h5>
+               <h6 class="card-title" id="brand">Brand: ${phone.brand}</h6>
+               <p class="card-title" id="model">Model: ${phone.slug}</p>
                <button onclick="details('${phone.slug}')" type="button" style="border:0;padding: 5px 20px;color:white ;background-color: #db3860; border-radius: 20px;" data-bs-toggle="modal" data-bs-target="#exampleModal"> details </button>
             </div>
          </div>
@@ -98,7 +98,7 @@ const displayPhone=data=>{
    toggleDisplay('grid') 
    toggleSpinner('none')  
    } 
-
+   }
 }
 
 
