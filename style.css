@@ -35,12 +35,7 @@ img{
     grid-gap: 20px; 
     padding: 15px 30px;
 }
-#more-search-result{
-    display: none; 
-    grid-template-columns: repeat(3,1fr); 
-    grid-gap: 20px; 
-    padding: 15px 30px;
-}
+
 
 @media only screen and (max-width:576px){
     #search-result{
@@ -48,11 +43,7 @@ img{
         flex-direction: column!important;
         padding: 20px!important;
 }
-    #more-search-result{
-        display: none!important; 
-        flex-direction: column!important;
-        padding: 20px!important;
-}
+    
     input{    
         padding-left: 20px;
         width: 200px;
