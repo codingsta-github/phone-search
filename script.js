@@ -75,8 +75,10 @@ const displayPhone=data=>{
       toggleSpinner('none')   
       toggleDisplay('none')
    }
-                                  
-   for (const phone of phones) {
+   //first 20 phone
+   for (let i = 0; i < 20; i++) {
+      const phone = phones[i];
+   
       const div=document.createElement('div');
       div.innerHTML=` 
       <div class="col">
@@ -95,8 +97,10 @@ const displayPhone=data=>{
    searchResult.appendChild(div);
    toggleDisplay('grid') 
    toggleSpinner('none')  
-   }
+   } 
+
 }
+
 
 
 //fetching details data 
