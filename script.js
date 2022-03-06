@@ -111,21 +111,23 @@ const details=slug=>{
 }
 
 const phoneDetails=data=>{
+   const modalDiv=document.getElementById('modal')
+      modalDiv.innerHTML=''; //for removing previous details on modal
+      
    const thumb=document.getElementById('thumb');
    thumb.setAttribute('src',data.image)
    const title=document.getElementById('exampleModalLabel');
       title.innerText=data.name; //modal title
      
    const release=document.getElementById('release-date');
-     if (data.releaseDate=="") {
+     if (data.releaseDate!=="") {
       release.innerText=data.releaseDate;
      } else {
       release.innerText='Sorry! release date not available';
      }
    
 
-   const modalDiv=document.getElementById('modal')
-      modalDiv.textContent=''; //for removing previous details on modal
+   
 
    const mainFeature=document.createElement('div');
       mainFeature.innerHTML=`
